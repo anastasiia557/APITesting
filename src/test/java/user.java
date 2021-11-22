@@ -13,7 +13,7 @@ public class user {
 	}
 	
 	@Test
-	public void getPetsByID20() {
+	public void getUserByUserName() {
 		Response resp = RestAssured.given()
 			.when()
 			.get("/user/user1");
