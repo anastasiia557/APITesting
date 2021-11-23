@@ -5,7 +5,11 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import io.restassured.specification.RequestSpecification;
+
 import static org.hamcrest.Matchers.equalTo;
+
+import org.json.JSONObject;
 
 
 public class pet {
@@ -58,14 +62,14 @@ public class pet {
 	}
 	
 	@Test
-	public void getPetsByID6() {
+	public void getPetsByID15() {
 		Response resp = RestAssured.given()
 			.when()
-			.get("pet/6");
+			.get("pet/15");
 		int statusCode = resp.getStatusCode();
 		System.out.println("The response status code is " + statusCode);
 		Assert.assertEquals(statusCode, 200);
-		Assert.assertEquals("6", resp.jsonPath().getString("id"));
+		Assert.assertEquals("15", resp.jsonPath().getString("id"));
 		System.out.println(resp.prettyPrint());
 	}
 	@Test
@@ -79,7 +83,24 @@ public class pet {
 		Assert.assertEquals("17", resp.jsonPath().getString("id"));
 		System.out.println(resp.prettyPrint());
 	}
+	
+	public void updatePet() {
+		RequestSpecification request = RestAssured.given();
+	
+		JSONObject requestParams = new JSONObject();
+		requestParams.put("id", 2);
+		requestParams.put("name", "boogie");
+		requestParams.put("status", "available");
+		System.out.println(request);
+		request.body(requestParams.toString());
+		Response response = request.put("/store/order");
+		int statusCode = response.getStatusCode();
+		Assert.assertEquals(statusCode, 200);
+		System.out.println("The response status code is " + statusCode);
+		System.out.println(response.prettyPrint());
+	}
 }
+
 	
 		
 		

@@ -50,6 +50,17 @@ public class store {
 	}
 	
 	@Test
+	public void getPetInvenroriesByStatus() {
+		Response resp = RestAssured.given()
+			.when()
+			.get("/store/inventory");
+		int statusCode = resp.getStatusCode();
+		System.out.println("The response status code is " + statusCode);
+		Assert.assertEquals(statusCode, 200);
+		System.out.println(resp.prettyPrint());
+	}
+	
+	@Test
 	public void deleteOrderByID() {
 		Response resp = RestAssured.given()
 				.when()
