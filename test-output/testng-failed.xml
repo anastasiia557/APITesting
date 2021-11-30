@@ -6,7 +6,7 @@
       <class name="store">
         <methods>
           <include name="SetUp"/>
-          <include name="getPetInvenroriesByStatus"/>
+          <include name="deleteOrderByID"/>
         </methods>
       </class> <!-- store -->
     </classes>
